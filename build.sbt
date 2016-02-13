@@ -15,6 +15,7 @@ libraryDependencies ++= {
     "org.springframework.boot" % "spring-boot-starter-data-rest" % springBootVersion,
     "org.springframework.boot" % "spring-boot-starter-data-jpa" % springBootVersion,
     "org.springframework.boot" % "spring-boot-starter-logging" % springBootVersion,
+    "org.postgresql" % "postgresql" % "9.4-1206-jdbc42",
     "com.h2database" % "h2" % "1.4.191",
     "com.github.scalaspring" %% "scalatest-spring" % "0.2.1" % Test,
     "org.springframework.boot" % "spring-boot-starter-test" % springBootVersion % Test,
@@ -47,4 +48,13 @@ headers := Map(
   "conf" -> Apache2_0("2016", "Dennis Vriend", "#")
 )
 
-enablePlugins(AutomateHeaderPlugin)
+enablePlugins(AutomateHeaderPlugin, JavaAppPackaging)
+
+// native packager
+version in Docker := "latest"
+maintainer in Docker := "dnvriend@gmail.com"
+// use the 'java:8' docker base image
+dockerBaseImage := "java:8"
+// expose the HTTP port
+dockerExposedPorts := Seq(8080)
+dockerRepository := Option("dnvriend")
