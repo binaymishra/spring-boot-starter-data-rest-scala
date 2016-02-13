@@ -17,6 +17,7 @@
 package com.github.dnvriend.repository.book
 
 import com.github.dnvriend.SpringConfiguration
+import com.github.dnvriend.repository.{Book, BookRepository}
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.test.context.ContextConfiguration
 import scala.collection.JavaConversions._
