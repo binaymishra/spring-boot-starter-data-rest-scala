@@ -18,6 +18,7 @@ package com.github.dnvriend.repository
 
 import javax.persistence._
 
+import org.springframework.data.domain.Pageable
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.repository.query.Param
 
@@ -37,8 +38,8 @@ case class Person(@BeanProperty firstName: String, @BeanProperty lastName: Strin
 }
 
 trait PersonRepository extends JpaRepository[Person, java.lang.Long] {
-  def findByFirstNameIgnoreCase(@Param("firstName") firstName: String): java.util.List[Person]
+  def findByFirstNameIgnoreCase(@Param("firstName") firstName: String, pageable: Pageable): java.util.List[Person]
   def findByLastNameIgnoreCase(@Param("lastName") lastName: String): java.util.List[Person]
-  def findByFirstNameOrLastNameIgnoreCase(@Param("firstName") firstName: String, @Param("lastName") lastName: String): java.util.List[Person]
+  def findByFirstNameOrLastName(@Param(value = "firstName") firstName: String, @Param(value = "lastName") lastName: String): java.util.List[Person]
   def findByBirthDate(@Param("birthDate") birthDate: java.util.Date): java.util.List[Person]
 }

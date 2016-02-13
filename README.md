@@ -20,7 +20,7 @@ books | DELETE | http -v delete localhost:8080/api/books | Delete all books
 persons | POST | http post localhost:8080/api/persons firstName=dennis lastName=vriend birthDate=1974-11-01 married=false | Create a person
 persons/search | GET | http -v localhost:8080/api/persons/search/findByLastNameIgnoreCase?lastName=dennis | search for persons 
 persons/search | GET | http -v localhost:8080/api/persons/search/findByFirstNameIgnoreCase?firstName=dennis | search for persons
-persons/search | GET | 
+persons/search | GET | http -v localhost:8080/api/persons/search/findByFirstNameOrLastName firstName==dennis lastName==vriend | search for persons
 
 # Resources
 - [Spring Data REST](http://docs.spring.io/spring-data/rest/docs/2.4.2.RELEASE/reference/html/)
